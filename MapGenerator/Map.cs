@@ -14,9 +14,12 @@ namespace MapGenerator
             Empty = 0, Wall = 1
         }
 
+        private int mapWidth;
+        private int mapHeight;
+
         public int[,] Coords { get; set; }
-        public int MapWidth { get; set; }
-        public int MapHeight { get; set; }
+        public int MapWidth { get { return mapWidth; } set { mapWidth = value > 1 ? value : 1; } }
+        public int MapHeight { get { return mapHeight; } set { mapHeight = value > 1 ? value : 1; } }
         public int Seed { get; set; }
 
         protected RandomGenerator ranGen;
@@ -57,6 +60,19 @@ namespace MapGenerator
                                               Environment.NewLine
                                              );
             return returnString;
+        }
+
+        public override string ToString()
+        {
+            return string.Join("  ",
+                                              "Width:",
+                                              MapWidth.ToString(),
+                                              "\tHeight:",
+                                              MapHeight.ToString(),
+                                              "\tSeed:",
+                                              Seed.ToString(),
+                                              Environment.NewLine
+                                             );
         }
 
         public void BlankMap()
@@ -148,6 +164,28 @@ namespace MapGenerator
             }
         }
 
+        protected Dictionary<int, List<Point>> PointsInRadius(Point center, int radius)
+        {
+            Dictionary<int, List<Point>> points = new Dictionary<int, List<Point>>();
+
+            for (int x = center.X - radius; x < center.X - radius + radius * 2; x++)
+            {
+                for (int y = center.Y - radius; y < center.Y - radius + radius * 2; y++)
+                {
+                    if (!IsOutOfBounds(x, y) && Util.Distance(center, new Point(x, y)) <= radius)
+                    {
+                        if (!points.ContainsKey(Coords[x, y]))
+                        {
+                            points[Coords[x, y]] = new List<Point>();
+                        }
+                        points[Coords[x, y]].Add(new Point(x, y));
+                    }
+                }
+            }
+
+            return points;
+        }
+
         protected Point GetFirstOccurance(int value)
         {
             for (int x = 0, y = 0; y <= MapHeight - 1; y++)
@@ -171,15 +209,27 @@ namespace MapGenerator
                 return true;
             }
 
-            if (Coords[x, y] == 1)
+            if (Coords[x, y] == (int)Tiles.Wall)
             {
                 return true;
             }
 
-            if (Coords[x, y] == 0)
+            return false;
+        }
+
+        protected bool IsEmpty(int x, int y)
+        {
+            // Consider out-of-bound a wall
+            if (IsOutOfBounds(x, y))
             {
                 return false;
             }
+
+            if (Coords[x, y] == (int)Tiles.Empty)
+            {
+                return true;
+            }
+
             return false;
         }
 

@@ -46,32 +46,41 @@ namespace MapGenerator
 
         private void button1_Click(object sender, EventArgs e)//Generate new
         {
-            Program.GenerateNew();
+            if (numericUpDown1.Value != 0 || numericUpDown2.Value != 0)
+            {
+                Program.Changesize((int)numericUpDown1.Value, (int)numericUpDown2.Value);
+
+                Program.GenerateNew();
+            }
+            else
+            {
+                Program.GenerateNew();
+            }
         }
 
-        private void button2_Click(object sender, EventArgs e)//Increase width
+        private void label3_Click(object sender, EventArgs e)
         {
-            Program.Changesize(imgOriginal.Width+1, imgOriginal.Height);
+
         }
 
-        private void button3_Click(object sender, EventArgs e)//Decrease width
+        private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            Program.Changesize(imgOriginal.Width-1, imgOriginal.Height);
+
         }
 
-        private void button4_Click(object sender, EventArgs e)//Increase height
+        private void label2_Click(object sender, EventArgs e)
         {
-            Program.Changesize(imgOriginal.Width, imgOriginal.Height+1);
+
         }
 
-        private void button5_Click(object sender, EventArgs e)//Decrease height
+        private void textBox2_TextChanged(object sender, EventArgs e)
         {
-            Program.Changesize(imgOriginal.Width, imgOriginal.Height-1);
+
         }
 
-        private void button6_Click(object sender, EventArgs e)
+        private void numericUpDown2_ValueChanged(object sender, EventArgs e)
         {
-            Program.DeColor();
+
         }
     }
 }

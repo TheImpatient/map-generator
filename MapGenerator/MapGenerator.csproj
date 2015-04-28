@@ -53,6 +53,7 @@
     </Compile>
     <Compile Include="Map.cs" />
     <Compile Include="MapHandler.cs" />
+    <Compile Include="Map\RoomSeperatedMap.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RandomGenerator.cs" />

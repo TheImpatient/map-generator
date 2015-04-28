@@ -93,7 +93,6 @@ namespace MapGenerator
                 {
                     closest = GetClosestPoint(pointsInRadius[largestCluster.Key], c.Value);
                     closestMainPoints.Add(c.Key, closest);
-                    //Debug draw point
                 }
                 else
                 {
@@ -155,7 +154,7 @@ namespace MapGenerator
             }
 
             //Merge Clusters into one value
-            //EmptyNonWalls();
+            EmptyNonWalls();
         }
 
         private void RemoveClusters(Dictionary<int, List<Point>> clusters, List<int> keys)
@@ -172,33 +171,6 @@ namespace MapGenerator
             }
         }
 
-        private Dictionary<int, List<Point>> PointsInRadius(Point center, int radius)
-        {
-            Dictionary<int, List<Point>> points = new Dictionary<int, List<Point>>();
-
-            for (int x = center.X - radius; x < center.X - radius + radius * 2; x++)
-            {
-                for (int y = center.Y - radius; y < center.Y - radius + radius * 2; y++)
-                {
-                    if (!IsOutOfBounds(x, y) && Distance(center, new Point(x, y)) <= radius)
-                    {
-                        if (!points.ContainsKey(Coords[x, y]))
-                        {
-                            points[Coords[x, y]] = new List<Point>();
-                        }
-                        points[Coords[x, y]].Add(new Point(x, y));
-                    }
-                }
-            }
-
-            return points;
-        }
-
-        private double Distance(Point point1, Point point2)
-        {
-            return Math.Sqrt(Math.Abs(Math.Pow(point1.X - point2.X, 2) + Math.Pow(point1.Y - point2.Y, 2)));
-
-        }
 
         private void DrawLine(Point from, Point to, int value)
         {
@@ -301,7 +273,7 @@ namespace MapGenerator
 
             foreach (Point p in points)
             {
-                var _d = Distance(p, point);
+                var _d = Util.Distance(p, point);
 
                 if (_d < distance)
                 {
