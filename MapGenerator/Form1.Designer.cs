@@ -93,7 +93,6 @@ namespace MapGenerator
             this.label2.Size = new System.Drawing.Size(38, 13);
             this.label2.TabIndex = 3;
             this.label2.Text = "Width:";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // button1
             // 
@@ -113,13 +112,12 @@ namespace MapGenerator
             this.label3.Size = new System.Drawing.Size(41, 13);
             this.label3.TabIndex = 11;
             this.label3.Text = "Height:";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // numericUpDown1
             // 
             this.numericUpDown1.Location = new System.Drawing.Point(149, 35);
             this.numericUpDown1.Maximum = new decimal(new int[] {
-            5000,
+            9999,
             0,
             0,
             0});
@@ -131,14 +129,13 @@ namespace MapGenerator
             // 
             this.numericUpDown2.Location = new System.Drawing.Point(265, 35);
             this.numericUpDown2.Maximum = new decimal(new int[] {
-            5000,
+            9999,
             0,
             0,
             0});
             this.numericUpDown2.Name = "numericUpDown2";
             this.numericUpDown2.Size = new System.Drawing.Size(51, 20);
             this.numericUpDown2.TabIndex = 14;
-            this.numericUpDown2.ValueChanged += new System.EventHandler(this.numericUpDown2_ValueChanged);
             // 
             // Form1
             // 

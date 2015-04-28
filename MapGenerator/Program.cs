@@ -18,7 +18,8 @@ namespace MapGenerator
         [STAThread]
         static void Main()
         {
-            m = new CaveMap(15, 15, 4819, 45);
+            //m = new CaveMap(50, 50, 4819, 45);
+            m = new RoomSeperatedMap(100, 100, 4819);
             mh = new MapHandler(m);
             mh.Generate();
 

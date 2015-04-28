@@ -7,8 +7,9 @@ using System.Threading.Tasks;
 
 namespace MapGenerator
 {
-    class MapHandler
+    class MapHandler //Creates maps, and populates areas based on tileset
     {
+        //TODO: Supply mask when generating map
         Map map;
 
         public MapHandler(Map m)

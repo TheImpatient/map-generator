@@ -377,7 +377,7 @@ namespace MapGenerator
         }
 
         public void RandomFillMap(int percent)
-        //TODO: Have 2d arr of illegal spaces to check up with
+        //TODO: Have 2d arr of illegal spaces to check up with (Mask)
         {
             //Reset generator
             ranGen = new RandomGenerator(Seed);

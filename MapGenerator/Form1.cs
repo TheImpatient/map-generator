@@ -44,7 +44,7 @@ namespace MapGenerator
             this.Refresh();
         }
 
-        private void button1_Click(object sender, EventArgs e)//Generate new
+        private void button1_Click(object sender, EventArgs e)
         {
             if (numericUpDown1.Value != 0 || numericUpDown2.Value != 0)
             {
@@ -56,31 +56,6 @@ namespace MapGenerator
             {
                 Program.GenerateNew();
             }
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void numericUpDown2_ValueChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }
